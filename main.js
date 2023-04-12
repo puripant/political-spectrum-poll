@@ -1,5 +1,13 @@
-const width = 360;
-const height = 270;
+const is_desktop = Math.max(
+  document.body.scrollWidth,
+  document.documentElement.scrollWidth,
+  document.body.offsetWidth,
+  document.documentElement.offsetWidth,
+  document.documentElement.clientWidth
+) >= 1000;
+const width = is_desktop ? 800 : 360;
+const height = is_desktop ? 600 : 270;
+window.addEventListener('resize', () => { location.reload(); });
 
 const blue_yellow = [
   { offset: "0%", color: "blue" },
@@ -117,6 +125,8 @@ chart
         closest = d.name;
       }
     }
+
+    // TODO save result to a simple file or place
     
     chart.selectAll(".result").style("display", "unset");
     d3.select("#details1").style("display", "none");

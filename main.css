@@ -81,3 +81,28 @@ body {
 	bottom: 0;
 	transform: translateX(-50%);
 }
+
+@media screen and (min-width: 1000px) {
+	.heading {
+		width: 800px;
+	}
+	.details {
+		width: 800px;
+	}
+	.wrapper {
+		width: 800px;
+		height: 600px;
+		margin: 0 auto;
+		border: 10px solid lightgray;
+	}
+	#axis-names {
+		width: 800px;
+		height: 600px;
+	}
+	.axis-name.x {
+		top: 285px;
+	}
+	.axis-name.y {
+		left: 400px;
+	}
+}
