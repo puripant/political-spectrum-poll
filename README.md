@@ -1,6 +1,6 @@
 # คุณอยู่ตรงไหน Political Spectrum Poll
 
-ความเชื่อทางการเมืองของคุณอยู่ตรงไหน? ใกล้พรรคอะไร? โดยใช้ข้อมูลจาก พรรคนี้อยู่ตรงไหน? ในรายการ [พรรคนี้เป็นไงบ้าง?](https://www.youtube.com/playlist?list=PLg523oxEzw_ZgLDw6TyuVGaydyC1uMOA8) โดย [Farose](https://www.youtube.com/@FAROSECHANNEL)
+ความเชื่อทางการเมืองของคุณอยู่ตรงไหน? ใกล้พรรคอะไร? โดยใช้ข้อมูลจาก พรรคนี้อยู่ตรงไหน? ในรายการ [พรรคนี้เป็นไงบ้าง?](https://www.youtube.com/playlist?list=PLg523oxEzw_ZgLDw6TyuVGaydyC1uMOA8) โดย [FAROSE](https://www.youtube.com/@FAROSECHANNEL)
 
 ## TODO
 

@@ -5,31 +5,45 @@ body {
 
 .heading {
 	text-align: center;
+	width: 360px;
+	margin: 20px auto;
 }
 .heading1 {
 	font-size: 2em;
-	margin-bottom: -0.2em;
+	margin-bottom: -0.3em;
 }
 .heading2 {
 	font-size: 1.3em;
-	margin-bottom: 0.5em;
+}
+
+.details {
+	text-align: center;
+	font-size: 0.8em;
+	width: 360px;
+	margin: 20px auto;
+}
+#details2 {
+	display: none;
 }
 
 .wrapper {
-	width: 400px;
-	height: 300px;
+	width: 360px;
+	height: 270px;
 	margin: 0 auto;
 	border: 10px solid lightgray;
 }
 
 #chart, #axis, #axis-names {
 	position: absolute;
+}
+
+#chart {
 	cursor: pointer;
 }
 
 #axis-names {
-	width: 400px;
-	height: 300px;
+	width: 360px;
+	height: 270px;
 }
 .axis-name {
 	position: absolute;
@@ -39,17 +53,17 @@ body {
 	width: max-content;
 }
 .axis-name.x {
-	top: 150px;
+	top: 120px;
 }
 .axis-name.y {
-	left: 200px;
+	left: 180px;
 }
 .axis-name.x.left {
-	left: 0.6em;
+	left: 0.7em;
 	transform: translateX(-50%) rotate(-90deg);
 }
 .axis-name.x.right {
-	right: 0.6em;
+	right: 0.7em;
 	transform: translateX(50%) rotate(90deg);
 }
 .axis-name.y.top {
