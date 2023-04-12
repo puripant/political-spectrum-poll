@@ -1,26 +1,42 @@
 body {
-	font: 20px sans-serif;
+	font-size: 20px;
+	font-family: 'Prompt', sans-serif;
 }
 
-#chart {
-	position: absolute;
-	top: 0;
-	left: 0;
+.heading {
+	text-align: center;
+}
+.heading1 {
+	font-size: 2em;
+	margin-bottom: -0.2em;
+}
+.heading2 {
+	font-size: 1.3em;
+	margin-bottom: 0.5em;
 }
 
-#axis {
-	position: absolute;
-	top: 0;
-	left: 0;
+.wrapper {
 	width: 400px;
 	height: 300px;
-	font-family: sans-serif;
+	margin: 0 auto;
+	border: 10px solid lightgray;
+}
+
+#chart, #axis, #axis-names {
+	position: absolute;
+	cursor: pointer;
+}
+
+#axis-names {
+	width: 400px;
+	height: 300px;
 }
 .axis-name {
 	position: absolute;
 	color: white;
 	background-color: black;
 	text-align: center;
+	width: max-content;
 }
 .axis-name.x {
 	top: 150px;
