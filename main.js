@@ -75,6 +75,7 @@ let voronoi = delaunay.voronoi([0, 0, width, height]);
 let cells = data.map((d, i) => [d, voronoi.cellPolygon(i)]);
 
 chart.append("g")
+    .classed("result", true)
     .attr("stroke", "white")
     .attr("stroke-width", 1)
     .attr("fill-opacity", 0.2)
@@ -84,9 +85,10 @@ chart.append("g")
     .attr("d", ([_, cell]) => `${cell.map((p, i) => ((i === 0) ? "M" : "L") + p)}`)
     .attr("fill", ([d, _]) => d["color-voronoi"])
     .append("title")
-      .text(([d, _]) => `ใกล้เคียง${d.name}`);
+      .text(([d, _]) => `ใกล้${d.name}`);
 
 chart.append("g")
+    .classed("result", true)
     .attr("stroke", "white")
     .attr("stroke-width", 1)
   .selectAll("circle")
@@ -98,3 +100,31 @@ chart.append("g")
     .attr("r", 10)
     .append("title")
       .text(d => d.name);
+
+chart
+  .on("click", event => {
+    [x, y] = d3.pointer(event);
+    chart.append("path")
+      .attr("fill", "black")
+      .attr("d", d3.symbol().size(150).type(d3.symbolStar))
+      .attr("transform", d => `translate(${x},${y})`)
+      .append("title")
+        .text("คุณเลือกตรงนี้");
+
+    let closest = null
+    for (let [d, cell] of cells) {
+      if (d3.polygonContains(cell, [x, y])) {
+        closest = d.name;
+      }
+    }
+    
+    chart.selectAll(".result").style("display", "unset");
+    d3.select("#details1").style("display", "none");
+    d3.select("#details2")
+      .text(closest ? `คุณอยู่ใกล้${closest}ที่สุด` : "คุณอยู่ไม่ใกล้พรรคไหนเลย")
+      .style("display", "unset");
+    d3.select("#details3").style("display", "unset");
+    chart.on("click", null);
+    d3.select("#chart")
+      .style("cursor", "default");
+  });
