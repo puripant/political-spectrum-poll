@@ -1,0 +1,46 @@
+body {
+	font: 20px sans-serif;
+}
+
+#chart {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#axis {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 400px;
+	height: 300px;
+	font-family: sans-serif;
+}
+.axis-name {
+	position: absolute;
+	color: white;
+	background-color: black;
+	text-align: center;
+}
+.axis-name.x {
+	top: 150px;
+}
+.axis-name.y {
+	left: 200px;
+}
+.axis-name.x.left {
+	left: 0.6em;
+	transform: translateX(-50%) rotate(-90deg);
+}
+.axis-name.x.right {
+	right: 0.6em;
+	transform: translateX(50%) rotate(90deg);
+}
+.axis-name.y.top {
+	top: 0;
+	transform: translateX(-50%);
+}
+.axis-name.y.bottom {
+	bottom: 0;
+	transform: translateX(-50%);
+}
