@@ -119,19 +119,34 @@ chart
       .append("title")
         .text("คุณเลือกตรงนี้");
 
-    let closest = null
+    let closest_party = null
     for (let [d, cell] of cells) {
       if (d3.polygonContains(cell, [x, y])) {
-        closest = d.name;
+        closest_party = d.name;
       }
     }
 
-    // TODO save result to a simple file or place
+    // save result to Google Sheets
+    fetch("https://script.google.com/macros/s/AKfycbxLDCx5auLMQx-212MW5UQgHKVEi6H4ceITDUp6S99jWKWSQ3EgzcP1_uTyUcpTNHll/exec", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        "x": x,
+        "y": y,
+        "spectrum_x": xScale.invert(x),
+        "spectrum_y": xScale.invert(y),
+        "closest_party": closest_party
+      })
+    })
+    .then(response => console.log('Success:', response))
+    .catch(error => console.error('Error:', error));
     
     chart.selectAll(".result").style("display", "unset");
     d3.select("#details1").style("display", "none");
     d3.select("#details2")
-      .text(closest ? `คุณอยู่ใกล้${closest}ที่สุด` : "คุณอยู่ไม่ใกล้พรรคไหนเลย")
+      .text(closest_party ? `คุณอยู่ใกล้${closest_party}ที่สุด` : "คุณอยู่ไม่ใกล้พรรคไหนเลย")
       .style("display", "unset");
     d3.select("#details3").style("display", "unset");
     chart.on("click", null);
