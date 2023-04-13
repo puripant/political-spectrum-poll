@@ -127,34 +127,30 @@ chart
     }
 
     let url = 'https://api.sheety.co/d770be79a6b1a9d5bc5adbe939740b7c/politicalSpectrumPoll/sheet1';
-    let body = {
-      sheet1: {
-        "x": x,
-        "y": y,
-        "spectrum_x": xScale.invert(x),
-        "spectrum_y": xScale.invert(y),
-        "closest_party": closest_party
-      }
-    }
+
+    // // TODO show the latest 100 points
+    // fetch(url)
+    // .then((response) => response.json())
+    // .then(json => {
+    //   console.log(json.sheet1);
+    // });
+
+    // save result to Google Sheets
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(body)
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sheet1: {
+          "x": x,
+          "y": y,
+          "spectrumX": xScale.invert(x),
+          "spectrumY": xScale.invert(y),
+          "closestParty": closest_party
+        }
+      })
     })
     .then((response) => response.json())
-    .then(json => {
-      // Do something with object
-      console.log(json.sheet1);
-    });
-    // save result to Google Sheets
-    // fetch("https://script.google.com/macros/s/AKfycbxLDCx5auLMQx-212MW5UQgHKVEi6H4ceITDUp6S99jWKWSQ3EgzcP1_uTyUcpTNHll/exec", {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify()
-    // })
-    // .then(response => console.log('Success:', response))
-    // .catch(error => console.error('Error:', error));
+    .then(json => { console.log(json.sheet1); });
     
     chart.selectAll(".result").style("display", "unset");
     d3.select("#details1").style("display", "none");
