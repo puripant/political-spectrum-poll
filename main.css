@@ -18,14 +18,23 @@ body {
 
 .details {
 	text-align: center;
-	font-size: 0.8em;
 	width: 360px;
 	margin: 20px auto;
 }
 #details2 {
 	font-size: 1.3em;
+	line-height: 1.3em;
 }
-#details2, #details3 {
+#details3{
+	font-size: 0.8em;
+}
+#legend div {
+	display: inline-block;
+	margin: 0 0.3em;
+	line-height: 1em;
+	vertical-align: middle;
+}
+#details2, #details3, #legend {
 	display: none;
 }
 

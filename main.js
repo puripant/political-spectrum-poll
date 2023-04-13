@@ -55,10 +55,10 @@ axis.append("line")
   .attr("y2", height)
 
 const data = [
-  { "x":  0   , "y":  0   , "name": "พรรคภูมิใจไทย", "color": "blue", "color-voronoi": "blue" },
-  { "x": -0.3 , "y":  0   , "name": "พรรคชาติพัฒนากล้า", "color": "url(#blue-yellow)", "color-voronoi": "url(#blue-yellow-gradient)" },
-  { "x": -0.6 , "y":  0.5 , "name": "พรรคเพื่อไทย", "color": "red", "color-voronoi": "red" },
-  { "x": -0.55, "y": -0.15, "name": "พรรคก้าวไกล", "color": "darkorange", "color-voronoi": "darkorange" }
+  { "x":  0   , "y":  0   , "name": "พรรคภูมิใจไทย", "color": "blue", "color-voronoi": "blue", "color-legend": "blue" },
+  { "x": -0.3 , "y":  0   , "name": "พรรคชาติพัฒนากล้า", "color": "url(#blue-yellow)", "color-voronoi": "url(#blue-yellow-gradient)", "color-legend": "linear-gradient(to bottom right,blue 50%,gold 50%)" },
+  { "x": -0.6 , "y":  0.5 , "name": "พรรคเพื่อไทย", "color": "red", "color-voronoi": "red", "color-legend": "red" },
+  { "x": -0.55, "y": -0.15, "name": "พรรคก้าวไกล", "color": "darkorange", "color-voronoi": "darkorange", "color-legend": "darkorange" }
 ]
 
 let xScale = d3.scaleLinear()
@@ -156,8 +156,23 @@ chart
     d3.select("#details1").style("display", "none");
     d3.select("#details2")
       .text(closest_party ? `คุณอยู่ใกล้${closest_party}ที่สุด` : "คุณอยู่ไม่ใกล้พรรคไหนเลย")
-      .style("display", "unset");
-    d3.select("#details3").style("display", "unset");
+      .style("display", "block");
+    
+    let legend = d3.select("#legend")
+      .style("display", "block")
+      .selectAll("div")
+      .data(data)
+      .join("div");
+    legend.append("div")
+      .style("background", d => d["color-legend"])
+      .style("width", 20)
+      .style("height", 20)
+      .style("border", "1px solid white")
+      .style("border-radius", "10px")
+    legend.append("div")
+      .text(d => d.name)
+
+    d3.select("#details3").style("display", "block");
     chart.on("click", null);
     d3.select("#chart")
       .style("cursor", "default");
